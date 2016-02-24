@@ -10,6 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["franck@web82.fr"]
 
   spec.summary       = %q{Provides some Backbone/Marionette generators for Rails 4.}
+  spec.summary       = %q{Provides some Backbone/Marionette generators for Rails 4. Installs assets via Bower with bower-rails gem. For now, only provides a starter app, and only with slim and skim templates.}
   spec.homepage      = "https://github.com/franckdelage/marionette-generators"
   spec.license       = "MIT"
 
