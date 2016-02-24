@@ -1,0 +1,8 @@
+Description:
+  Creates a folder and files structure for a full Marionette app inside a Rails app
+
+Example:
+    rails generate marionette_app Name_of_app 
+
+    This will create:
+        what/will/it/create
