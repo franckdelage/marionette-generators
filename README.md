@@ -1,8 +1,8 @@
 # Marionette::Generators
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/marionette/generators`. To experiment with that code, run `bin/console` for an interactive prompt.
+Marionette Generators provides some Backbone/Marionette generators to build a full Marionette app.
 
-TODO: Delete this and the text above, and describe your gem
+It's still in development, so it only provides a starter app for now, and templates are only Slim and Skim.
 
 ## Installation
 
@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### App
+
+    $ rails g marionette:app NameOfYourApp
+
+This will install bower-rails, slim-rails and skim gem, and create a `backbone` folder in app/assets/javascripts with all necessary directories and files. It will also create a `templates` folder in app/assets.
+
+Then you should see a welcome message in your browser.
 
 ## Development
 
