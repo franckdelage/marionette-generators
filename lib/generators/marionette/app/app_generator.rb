@@ -25,14 +25,14 @@ module Marionette
         gem 'skim'
         bundle_install
         backbone = "app/assets/javascripts/backbone"
-        template "app.js.coffee", "#{backbone}/#{file_name}.js.coffee"
-        template "layout.jst.skim", "app/assets/templates/layouts/layout.jst.skim"
-        template "logger.js.coffee", "#{backbone}/utils/logger.js.coffee"
-        template "defaults.js.coffee", "#{backbone}/utils/defaults.js.coffee"
-        template "config.js.coffee", "#{backbone}/config.js.coffee"
-        template "layout.js.coffee", "#{backbone}/views/layouts/layout.js.coffee"
-        template "app_router.js.coffee", "#{backbone}/routers/app_router.js.coffee"
-        template "application.html.slim", "app/views/layouts/application.html.slim"
+        template "app/app.js.coffee", "#{backbone}/#{file_name}.js.coffee"
+        template "app/layout.jst.skim", "app/assets/templates/layouts/layout.jst.skim"
+        template "app/logger.js.coffee", "#{backbone}/utils/logger.js.coffee"
+        template "app/defaults.js.coffee", "#{backbone}/utils/defaults.js.coffee"
+        template "app/config.js.coffee", "#{backbone}/config.js.coffee"
+        template "app/layout.js.coffee", "#{backbone}/views/layouts/layout.js.coffee"
+        template "app/app_router.js.coffee", "#{backbone}/routers/app_router.js.coffee"
+        template "app/application.html.slim", "app/views/layouts/application.html.slim"
       end
 
       def add_app_to_index_view
@@ -43,7 +43,7 @@ module Marionette
         home = home.first
         File.delete "app/views/#{home}/index.html.erb" if File.exist? "app/views/#{home}/index.html.erb"
         File.delete "app/views/#{home}/index.html.haml" if File.exist? "app/views/#{home}/index.html.haml"
-        template "index.html.slim", "app/views/#{home}/index.html.slim"
+        template "app/index.html.slim", "app/views/#{home}/index.html.slim"
       end
 
       def include_js
