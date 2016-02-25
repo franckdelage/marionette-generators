@@ -38,9 +38,13 @@ module Marionette
       def add_app_to_index_view
         gem 'slim-rails'
         bundle_install
-        routes = File.read "config/routes.rb"
-        home = routes.match(/root to: '([a-z_]+)\#index'/).try :captures
-        home = home.first
+        if File.exist? "config/routes.rb"
+          routes = File.read "config/routes.rb"
+          home = routes.match(/root to: '([a-z_]+)\#index'/).try :captures
+          home = home.first
+        else
+          home = "home"
+        end
         File.delete "app/views/#{home}/index.html.erb" if File.exist? "app/views/#{home}/index.html.erb"
         File.delete "app/views/#{home}/index.html.haml" if File.exist? "app/views/#{home}/index.html.haml"
         template "app/index.html.slim", "app/views/#{home}/index.html.slim"
