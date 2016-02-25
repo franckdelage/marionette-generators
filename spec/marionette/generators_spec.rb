@@ -31,12 +31,25 @@ describe Marionette::Generators::AppGenerator, type: :generator do
     end
   end
 
+  it 'writes into files' do
+    assert_file "app/assets/javascripts/application.js", /\/\/= require console.style\/console.style/
+    assert_file "app/assets/javascripts/application.js", /\/\/= require backbone\/dummyapp/
+    assert_file "Gemfile", /gem 'bower-rails'/
+    assert_file "Gemfile", /gem 'slim-rails'/
+    assert_file "Gemfile", /gem 'skim'/
+    # assert_file "Bowerfile", /asset 'console.style'/
+    # assert_file "Bowerfile", /asset 'backbone'/
+    # assert_file "Bowerfile", /asset 'marionette'/
+  end
+
   def touch_files
     %w(Gemfile Bowerfile).each do |file|
       FileUtils.touch File.join(destination_root, file)
     end
     FileUtils.mkdir_p File.join(destination_root, "app", "assets", "javascripts")
-    FileUtils.touch File.join(destination_root, "app", "assets", "javascripts", "application.js")
+    app_js = File.join(destination_root, "app", "assets", "javascripts", "application.js")
+    FileUtils.touch app_js
+    File.write(app_js, "//= require_tree .")
   end
 
 end
