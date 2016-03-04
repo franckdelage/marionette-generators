@@ -29,6 +29,14 @@ describe Marionette::Generators::AppGenerator, type: :generator do
     ].each do |file|
       assert_file file
     end
+    if File.exist? "config/routes.rb"
+      routes = File.read "config/routes.rb"
+      home = routes.match(/root to: ['"]{1}([a-z_]+)\#index['"]{1}/).try :captures
+      home = home.first
+    else
+      home = "home"
+    end
+    assert_file "app/views/#{home}/index.html.slim"
   end
 
   it 'writes into files' do
