@@ -40,7 +40,7 @@ module Marionette
         bundle_install
         if File.exist? "config/routes.rb"
           routes = File.read "config/routes.rb"
-          home = routes.match(/root to: '([a-z_]+)\#index'/).try :captures
+          home = routes.match(/root to: ['"]{1}([a-z_]+)\#index['"]{1}/).try :captures
           home = home.first
         else
           home = "home"
