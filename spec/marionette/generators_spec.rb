@@ -18,6 +18,8 @@ describe Marionette::Generators::AppGenerator, type: :generator do
   it 'creates files' do
     backbone = "app/assets/javascripts/backbone"
     [
+      "#{backbone}/models/.gitkeep",
+      "#{backbone}/collections/.gitkeep",
       "#{backbone}/dummyapp.js.coffee",
       "app/assets/templates/layouts/layout.jst.skim",
       "#{backbone}/utils/logger.js.coffee",

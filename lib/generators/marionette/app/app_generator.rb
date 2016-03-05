@@ -8,6 +8,7 @@ module Marionette
       def create_directory_structure
         %w(models collections routers utils views).each do |folder|
           empty_directory "app/assets/javascripts/backbone/#{folder}"
+          template "app/gitkeep", "app/assets/javascripts/backbone/#{folder}/.gitkeep"
         end
         empty_directory "app/assets/templates"
       end
