@@ -2,7 +2,22 @@ Description:
   Creates a folder and files structure for a full Marionette app inside a Rails app
 
 Example:
-    rails generate marionette_app Name_of_app 
+    rails generate marionette:app Name_of_app 
 
     This will create:
-        what/will/it/create
+      app/assets/javascripts/name_of_app_app.js
+      app/assets/javascripts/backbone/name_of_app.js.coffee
+      app/assets/templates/layouts/layout.jst.skim
+      app/assets/javascripts/backbone/utils/logger.js.coffee
+      app/assets/javascripts/backbone/utils/defaults.js.coffee
+      app/assets/javascripts/backbone/config.js.coffee
+      app/assets/javascripts/backbone/views/layouts/layout.js.coffee
+      app/assets/javascripts/backbone/routers/app_router.js.coffee
+      app/views/layouts/application.html.slim
+
+    This will also install 3 gems : bower-rails, slim-rails and skim
+
+    This will create a index.html.slim in app/views/[your_home_controller]
+    with a starter for the marionette app
+
+    In the end, you should see in your browser the message "Hello there, I'm the [Name_of_app] Marionette app !"
