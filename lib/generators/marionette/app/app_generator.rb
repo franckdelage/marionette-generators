@@ -47,16 +47,18 @@ module Marionette
             home = captures.last
           else
             home = "visitors"
-            apppend_to_file "config/routes.rb", "  root to: '#{home}#index'", after: "routes.draw\n"
+            append_to_file "config/routes.rb", "  root to: '#{home}#index'", after: "routes.draw\n"
           end
-          unless File.exist? "app/controllers/#{home}"
-            generate "controller", "#{home.capitalize} --skip-routes --skip-javascripts --skip-stylesheets"
-          end
-          File.delete "app/views/#{home}/index.html.erb" if File.exist? "app/views/#{home}/index.html.erb"
-          File.delete "app/views/#{home}/index.html.haml" if File.exist? "app/views/#{home}/index.html.haml"
-          File.delete "app/views/#{home}/index.html.slim" if File.exist? "app/views/#{home}/index.html.slim"
-          template "app/index.html.slim", "app/views/#{home}/index.html.slim"
+        else
+          home = "visitors"
         end
+        unless File.exist? "app/controllers/#{home}"
+          generate "controller", "#{home.capitalize} --skip-routes --skip-javascripts --skip-stylesheets"
+        end
+        File.delete "app/views/#{home}/index.html.erb" if File.exist? "app/views/#{home}/index.html.erb"
+        File.delete "app/views/#{home}/index.html.haml" if File.exist? "app/views/#{home}/index.html.haml"
+        File.delete "app/views/#{home}/index.html.slim" if File.exist? "app/views/#{home}/index.html.slim"
+        template "app/index.html.slim", "app/views/#{home}/index.html.slim"
       end
 
       def include_js

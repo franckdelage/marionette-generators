@@ -33,10 +33,11 @@ describe Marionette::Generators::AppGenerator, type: :generator do
     end
     if File.exist? "config/routes.rb"
       routes = File.read "config/routes.rb"
-      home = routes.match(/root to: ['"]{1}([a-z_]+)\#index['"]{1}/).try :captures
-      home = home.first
+      captures = routes.match(/(\s*#\s*|)root( to:|) ['"]{1}([a-z_]+)\#index['"]{1}/).try :captures
+      home = captures.last
+      puts "PAFITO WAA #{home}"
     else
-      home = "home"
+      home = "visitors"
     end
     assert_file "app/views/#{home}/index.html.slim"
   end
