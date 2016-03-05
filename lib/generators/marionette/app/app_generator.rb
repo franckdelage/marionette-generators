@@ -47,13 +47,13 @@ module Marionette
             home = captures.last
           else
             home = "visitors"
-            append_to_file "config/routes.rb", "  root to: '#{home}#index'", after: "routes.draw\n"
+            append_to_file "config/routes.rb", "  root to: '#{home}#index'", after: "routes.draw do\n"
           end
         else
           home = "visitors"
         end
         unless File.exist? "app/controllers/#{home}"
-          generate "controller", "#{home.capitalize} --skip-routes --skip-javascripts --skip-stylesheets"
+          generate "controller", "#{home.capitalize} index --skip-routes --skip-javascripts --skip-stylesheets"
         end
         File.delete "app/views/#{home}/index.html.erb" if File.exist? "app/views/#{home}/index.html.erb"
         File.delete "app/views/#{home}/index.html.haml" if File.exist? "app/views/#{home}/index.html.haml"
