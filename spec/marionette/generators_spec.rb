@@ -42,14 +42,12 @@ describe Marionette::Generators::AppGenerator, type: :generator do
   end
 
   it 'writes into files' do
-    assert_file "app/assets/javascripts/application.js", /\/\/= require console.style\/console.style/
-    assert_file "app/assets/javascripts/application.js", /\/\/= require backbone\/dummyapp/
+    assert_file "app/assets/javascripts/application.js", /\/\/= require dummyapp_app/
+    assert_file "app/assets/javascripts/dummyapp_app.js", /\/\/= require console.style\/console.style/
+    assert_file "app/assets/javascripts/dummyapp_app.js", /\/\/= require backbone\/dummyapp/
     assert_file "Gemfile", /gem 'bower-rails'/
     assert_file "Gemfile", /gem 'slim-rails'/
     assert_file "Gemfile", /gem 'skim'/
-    # assert_file "Bowerfile", /asset 'console.style'/
-    # assert_file "Bowerfile", /asset 'backbone'/
-    # assert_file "Bowerfile", /asset 'marionette'/
   end
 
   def touch_files

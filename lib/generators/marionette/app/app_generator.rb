@@ -25,6 +25,7 @@ module Marionette
       def create_files
         gem 'skim'
         bundle_install
+        template "app/marionette_app.js", "app/assets/javascripts/#{file_name}_app.js"
         backbone = "app/assets/javascripts/backbone"
         template "app/app.js.coffee", "#{backbone}/#{file_name}.js.coffee"
         template "app/layout.jst.skim", "app/assets/templates/layouts/layout.jst.skim"
@@ -52,8 +53,7 @@ module Marionette
       end
 
       def include_js
-        gsub_file "app/assets/javascripts/application.js", "//= require_tree .", app_js_data
-        inject_into_file "app/assets/javascripts/application.js", "//= require backbone/#{name.downcase}\n", after: "require marionette/lib/core/backbone.marionette\n"
+        gsub_file "app/assets/javascripts/application.js", "//= require_tree .", "//= require #{name.downcase}_app"
       end
 
       private
@@ -68,25 +68,6 @@ module Marionette
 asset 'console.style'  
 asset 'backbone'
 asset 'marionette'  
-RUBY
-        end
-
-        def app_js_data
-<<RUBY
-//= require console.style/console.style
-//= require skim
-//= require underscore/underscore
-//= require backbone/backbone
-//= require backbone.wreqr/lib/backbone.wreqr
-//= require backbone.babysitter/lib/backbone.babysitter
-//= require marionette/lib/core/backbone.marionette
-//= require_tree ../templates
-//= require ./backbone/config
-//= require_tree ./backbone/utils
-//= require_tree ./backbone/models
-//= require_tree ./backbone/collections
-//= require_tree ./backbone/views
-//= require_tree ./backbone/routers
 RUBY
         end
 
