@@ -42,14 +42,21 @@ module Marionette
         bundle_install
         if File.exist? "config/routes.rb"
           routes = File.read "config/routes.rb"
-          home = routes.match(/root to: ['"]{1}([a-z_]+)\#index['"]{1}/).try :captures
-          home = home.first
-        else
-          home = "home"
+          captures = routes.match(/(\s*#\s*|)root( to:|) ['"]{1}([a-z_]+)\#index['"]{1}/).try :captures
+          if captures.first.empty?
+            home = captures.last
+          else
+            home = "visitors"
+            apppend_to_file "config/routes.rb", "  root to: '#{home}#index'", after: "routes.draw\n"
+          end
+          unless File.exist? "app/controllers/#{home}"
+            generate "controller", "#{home.capitalize} --skip-routes --skip-javascripts --skip-stylesheets"
+          end
+          File.delete "app/views/#{home}/index.html.erb" if File.exist? "app/views/#{home}/index.html.erb"
+          File.delete "app/views/#{home}/index.html.haml" if File.exist? "app/views/#{home}/index.html.haml"
+          File.delete "app/views/#{home}/index.html.slim" if File.exist? "app/views/#{home}/index.html.slim"
+          template "app/index.html.slim", "app/views/#{home}/index.html.slim"
         end
-        File.delete "app/views/#{home}/index.html.erb" if File.exist? "app/views/#{home}/index.html.erb"
-        File.delete "app/views/#{home}/index.html.haml" if File.exist? "app/views/#{home}/index.html.haml"
-        template "app/index.html.slim", "app/views/#{home}/index.html.slim"
       end
 
       def include_js
