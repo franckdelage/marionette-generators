@@ -1,6 +1,8 @@
 # Marionette::Generators
 
-Marionette Generators provides some Backbone/Marionette generators to build a full Marionette app.
+[![Gem Version](https://badge.fury.io/rb/marionette-generators.svg)](https://badge.fury.io/rb/marionette-generators)
+
+Marionette Generators provides some Backbone/Marionette generators to build a full Marionette app inside a Rails app.
 
 It's still in development, so it only provides a starter app for now, and templates are only Slim and Skim.
 
@@ -26,7 +28,7 @@ Or install it yourself as:
 
     $ rails g marionette:app NameOfYourApp
 
-This will install bower-rails, slim-rails and skim gem, and create a `backbone` folder in app/assets/javascripts with all necessary directories and files. It will also create a `templates` folder in app/assets.
+This will install [bower-rails](https://github.com/rharriso/bower-rails), [slim-rails](https://github.com/slim-template/slim-rails) and [skim](https://github.com/slim-template/slim-rails) gem, and create a `backbone` folder in app/assets/javascripts with all necessary directories and files. It will also create a `templates` folder in app/assets.
 
 Then you should see a welcome message in your browser.
 
@@ -38,7 +40,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/marionette-generators. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/franckdelage/marionette-generators. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
