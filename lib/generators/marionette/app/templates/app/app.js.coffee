@@ -9,6 +9,7 @@
   App.Utils = {}
 
   App.on 'before:start', ->
+    <%= name.capitalize %>.Logger = new <%= name.capitalize %>.Utils.Logger
     new <%= name.capitalize %>.Utils.Defaults
     new <%= name.capitalize %>.Routers.AppRouter
 

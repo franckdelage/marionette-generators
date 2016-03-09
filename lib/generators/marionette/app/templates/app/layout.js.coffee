@@ -5,8 +5,5 @@ class <%= name.capitalize %>.Views.Layout extends Backbone.Marionette.LayoutView
 
   # regions:
 
-  initialize: ->
-    @logger = new <%= name.capitalize %>.Utils.Logger
-
   onRender: ->
-    @logger.view 'Rendering main layout view'
+    <%= name.capitalize %>.Logger.view 'Rendering main layout view'
