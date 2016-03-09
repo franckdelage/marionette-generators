@@ -4,11 +4,10 @@ class <%= name.capitalize %>.Routers.AppRouter extends Backbone.Marionette.AppRo
     '': 'index'
 
   initialize: ->
-    @logger = new <%= name.capitalize %>.Utils.Logger
-    @logger.router 'Initialize Backbone router'
+    <%= name.capitalize %>.Logger.router 'Initialize Backbone router'
     @layoutView = new <%= name.capitalize %>.Views.Layout
     <%= name.capitalize %>.rootView = @layoutView
     <%= name.capitalize %>.rootView.render()
 
   index: ->
-    @logger.router 'Call index action'
+    <%= name.capitalize %>.Logger.router 'Call index action'
