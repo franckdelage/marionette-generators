@@ -37,7 +37,7 @@ describe Marionette::Generators::AppGenerator, type: :generator do
       routes = File.read "config/routes.rb"
       captures = routes.match(/(\s*#\s*|)root( to:|) ['"]{1}([a-z_]+)\#index['"]{1}/).try :captures
       home = captures.last
-      puts "PAFITO WAA #{home}"
+      puts "HOME: #{home}"
     else
       home = "visitors"
     end
