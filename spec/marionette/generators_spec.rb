@@ -20,6 +20,8 @@ describe Marionette::Generators::AppGenerator, type: :generator do
     [
       "#{backbone}/models/.gitkeep",
       "#{backbone}/collections/.gitkeep",
+      "#{backbone}/regions/.gitkeep",
+      "#{backbone}/behaviors/.gitkeep",
       "#{backbone}/dummyapp.js.coffee",
       "app/assets/templates/layouts/layout.jst.skim",
       "#{backbone}/utils/logger.js.coffee",
@@ -46,6 +48,8 @@ describe Marionette::Generators::AppGenerator, type: :generator do
     assert_file "app/assets/javascripts/application.js", /\/\/= require dummyapp_app/
     assert_file "app/assets/javascripts/dummyapp_app.js", /\/\/= require console.style\/console.style/
     assert_file "app/assets/javascripts/dummyapp_app.js", /\/\/= require backbone\/dummyapp/
+    assert_file "app/assets/javascripts/backbone/dummyapp.js.coffee", /App.Regions = {}/
+    assert_file "app/assets/javascripts/backbone/dummyapp.js.coffee", /App.Behaviors = {}/
     assert_file "Gemfile", /gem 'bower-rails'/
     assert_file "Gemfile", /gem 'slim-rails'/
     assert_file "Gemfile", /gem 'skim'/
