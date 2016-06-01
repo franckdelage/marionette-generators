@@ -43,10 +43,8 @@ module Marionette
         if File.exist? "config/routes.rb"
           routes = File.read "config/routes.rb"
           captures = routes.match(/(\s*#\s*|)root( to:|) ['"]{1}([a-z_]+)\#index['"]{1}/).try :captures
-          if !captures.nil?
-            if captures.first.empty?
-              home = captures.last
-            end
+          if captures.first.empty?
+            home = captures.last
           else
             home = "visitors"
             append_to_file "config/routes.rb", "  root to: '#{home}#index'", after: "routes.draw do\n"
