@@ -4,6 +4,8 @@
 
   App.Routers = {}
   App.Views = {}
+  App.Regions = {}
+  App.Behaviors = {}
   App.Collections = {}
   App.Models = {}
   App.Utils = {}
